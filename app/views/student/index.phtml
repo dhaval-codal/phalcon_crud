@@ -1,0 +1,57 @@
+<!-- app/views/posts/show.phtml -->  
+<h3>This is Students Data view!</h3>  
+<!-- app/views/index.phtml -->  
+<html>  
+	
+	<head>  
+		<title>Data Show</title>  
+		<style type="text/css">
+			table {
+			  font-family: arial, sans-serif;
+			  border-collapse: collapse;
+			  width: 100%;
+			  background: lightgray;
+			  font-size: 20px;
+			  text-align: center;
+			  font-weight: bolder;
+			}
+
+			td, th {
+			  border: 3px solid black;
+			  padding: 8px;
+			}
+		</style>
+	</head>  
+
+	<body style="margin:15px;">  
+		
+		<p>I have received the <?php echo $this->getContent(); ?> </p>
+		<a href="/cretstud" style="text-decoration: none; font-size: 25px;"> Create New Recode</a> <br><br>
+		<table border="2">
+			<tr>
+				<th>Roll No</th>
+				<th>Student Name</th>
+				<th>Marks</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<?php 
+				foreach ($data as $d) {
+			        echo "<tr>";
+			        echo "<td>" . $d->id . "</td><td>" . $d->name . "</td><td>" . $d->marks . "</td>";
+			        echo "<td>
+			        	<a href='/editstud/$d->id'>
+                        <img src='/img/viewmore.png' width='30' height='30'></a>
+                      </td>
+                      <td>
+                        <a href='/deletestud/$d->id'>
+                        <img src='/img/delete.png' width='30' height='30'></a>
+                      </td>";
+			        echo "</tr>";
+			    }
+			?>
+		</table>
+		  
+
+	</body>  
+</html>  
